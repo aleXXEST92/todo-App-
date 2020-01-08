@@ -5,7 +5,7 @@ class App extends Component {
   constructor(props){
   super(props)
   this.state = {
-    newItem:"",
+    todo:"",
     list: []
   }
   }
@@ -17,21 +17,21 @@ class App extends Component {
     });
   }
   addItem () {
-    //create new item with unique id 
-    const newItem = {
+    //create new item (todo) with unique id 
+    const todo = {
       id: 1 + Math.random(),
-      value: this.state.newItem.slice()
+      value: this.state.todo.slice()
     };
 
     const list = [...this.state.list];
 
     //add new item to list 
-    list.push(newItem);
+    list.push(todo);
 
-    //update state with new list and reset newItem input
+    //update state with new list and reset todo input
     this.setState ({
       list,
-      newItem:""
+      todo:""
     });
   }
 
@@ -54,8 +54,8 @@ class App extends Component {
             <input
               type="text"
               placeholder="Get er done..."
-              value={this.state.newItem}
-              onChange={event => this.updateInput("newItem", event.target.value)} 
+              value={this.state.todo}
+              onChange={event => this.updateInput("todo", event.target.value)} 
             />
             <button
               onClick={() => this.addItem()}
